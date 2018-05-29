@@ -48,7 +48,7 @@ public class ChatTranslateEvent extends Event {
      *
      * @return The Player who sent the original chat message.
      */
-    public Player getPlayer() {
+    public Player getSender() {
         return sender;
     }
 
@@ -57,7 +57,7 @@ public class ChatTranslateEvent extends Event {
      *
      * @return The String containing the message content.
      *
-     * @see #getPlayer()
+     * @see #getSender()
      */
     public String getOriginalMessage() {
         return originalMessage;
@@ -68,7 +68,7 @@ public class ChatTranslateEvent extends Event {
      *
      * @return The String containing the message content.
      *
-     * @see #getPlayer()
+     * @see #getSender() 
      * @see #getOriginalMessage()
      */
     public String getTranslatedMessage() {
