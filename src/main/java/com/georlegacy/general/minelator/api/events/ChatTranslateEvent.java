@@ -4,12 +4,16 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
+import java.util.Date;
 import java.util.Set;
 
 /**
  * The primary event for MineLator. Is called whenever a message sent in any language other than the base language is sent to the chat. Primary usage for API.
  *
  * @see Event
+ *
+ * @author James Conway (615283)
+ * @since 1.0
  */
 public class ChatTranslateEvent extends Event {
 
@@ -59,25 +63,60 @@ public class ChatTranslateEvent extends Event {
         return originalMessage;
     }
 
+    /**
+     * The message sent by the player <b>after</b> translation.
+     *
+     * @return The String containing the message content.
+     *
+     * @see #getPlayer()
+     * @see #getOriginalMessage()
+     */
     public String getTranslatedMessage() {
         return translatedMessage;
     }
 
+    /**
+     * The {@link com.gtranslate.Language} code for the original language prior to the translation.
+     *
+     * @return The String language code.
+     *
+     * @see com.gtranslate.Language
+     */
     public String getOriginalLanguage() {
         return originalLanguage;
     }
 
+    /**
+     * The timestamp for the sending of the original message.
+     *
+     * @return Timestamp formatted as a String with {@link java.text.SimpleDateFormat}.
+     *
+     * @see java.text.SimpleDateFormat#format(Date)
+     */
     public String getTimeStamp() {
         return timeStamp;
     }
 
+    /**
+     * The players who received the message sent by the sender.
+     *
+     * @return {@link Set} of {@link Player}s.
+     */
     public Set<Player> getRecipients() {
         return recipients;
     }
 
-
+    /**
+     * Bukkit {@link HandlerList}
+     */
     public static final HandlerList handlers = new HandlerList();
 
+
+    /**
+     * superclass @Override method
+     *
+     * @return {@link java.util.List} of EventHandlers
+     */
     @Override
     public HandlerList getHandlers() {
         return handlers;
