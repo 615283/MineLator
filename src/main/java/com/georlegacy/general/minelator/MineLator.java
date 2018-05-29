@@ -8,8 +8,16 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class MineLator extends JavaPlugin {
 
-    Translator translator;
-    Language language;
+    private Translator translator;
+    private Language language;
+
+    public Translator getTranslator() {
+        return translator;
+    }
+
+    public Language getLanguage() {
+        return language;
+    }
 
     @Override
     public void onEnable() {

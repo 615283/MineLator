@@ -68,7 +68,7 @@ public class ChatTranslateEvent extends Event {
      *
      * @return The String containing the message content.
      *
-     * @see #getSender() 
+     * @see #getSender()
      * @see #getOriginalMessage()
      */
     public String getTranslatedMessage() {
