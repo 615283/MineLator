@@ -3,6 +3,7 @@ package com.georlegacy.general.minelator.listeners;
 import com.georlegacy.general.minelator.MineLator;
 import com.georlegacy.general.minelator.api.events.ChatTranslateEvent;
 import com.rmtheis.yandtran.TranslateUtils;
+import com.rmtheis.yandtran.language.Language;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -23,7 +24,7 @@ public class PlayerChatListener implements Listener {
         Player sender;
         String originalMessage;
         String translatedMessage;
-        String originalLanguage;
+        Language originalLanguage;
         String timeStamp;
         Set<Player> recipients;
 
@@ -31,8 +32,8 @@ public class PlayerChatListener implements Listener {
         originalMessage = e.getMessage();
         timeStamp = new SimpleDateFormat("dd.MM.yyyy hh:mm:ss zzz").format(new Date());
         recipients = e.getRecipients();
-        originalLanguage = TranslateUtils.detect("APIKEY", originalMessage);
-        translatedMessage = ml.getTranslator().translate(originalLanguage, originalLanguage, Language.ENGLISH);
+        originalLanguage = Language.fromString(TranslateUtils.detect("APIKEY", originalMessage));
+        translatedMessage = TranslateUtils.translate("APIKEY", originalMessage, originalLanguage, Language.ENGLISH);
 
         ml.getServer().getPluginManager().callEvent(
                 new ChatTranslateEvent(
@@ -45,7 +46,7 @@ public class PlayerChatListener implements Listener {
                 )
         );
 
-        ml.getMessageUtil().sendToPermissionHolders("minelator.monitor", String.format("&7[TRANSLATED] &8(%s) &r%s: &f%s", ml.getLanguage().getNameLanguage(originalLanguage), sender.getDisplayName(), translatedMessage));
+        ml.getMessageUtil().sendToPermissionHolders("minelator.monitor", String.format("&7[TRANSLATED] &8(%s) &r%s: &f%s", originalLanguage.toString(), sender.getDisplayName(), translatedMessage));
 
     }
 

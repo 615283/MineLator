@@ -1,5 +1,6 @@
 package com.georlegacy.general.minelator.api.events;
 
+import com.rmtheis.yandtran.language.Language;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
@@ -20,7 +21,7 @@ public class ChatTranslateEvent extends Event {
     private Player sender;
     private String originalMessage;
     private String translatedMessage;
-    private String originalLanguage;
+    private Language originalLanguage;
     private String timeStamp;
     private Set<Player> recipients;
 
@@ -34,7 +35,7 @@ public class ChatTranslateEvent extends Event {
      * @param timeStamp The {@link java.text.SimpleDateFormat} timestamp for the sending of the message.
      * @param recipients The {@link Set} of recipients of the message.
      */
-    public ChatTranslateEvent(Player sender, String originalMessage, String translatedMessage, String originalLanguage, String timeStamp, Set<Player> recipients) {
+    public ChatTranslateEvent(Player sender, String originalMessage, String translatedMessage, Language originalLanguage, String timeStamp, Set<Player> recipients) {
         this.sender = sender;
         this.originalMessage = originalMessage;
         this.translatedMessage = translatedMessage;
@@ -82,7 +83,7 @@ public class ChatTranslateEvent extends Event {
      *
      * @see com.rmtheis.yandtran.language.Language
      */
-    public String getOriginalLanguage() {
+    public Language getOriginalLanguage() {
         return originalLanguage;
     }
 
