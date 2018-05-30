@@ -2,6 +2,7 @@ package com.georlegacy.general.minelator.listeners;
 
 import com.georlegacy.general.minelator.MineLator;
 import com.georlegacy.general.minelator.api.events.ChatTranslateEvent;
+import com.rmtheis.yandtran.TranslateUtils;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -30,21 +31,21 @@ public class PlayerChatListener implements Listener {
         originalMessage = e.getMessage();
         timeStamp = new SimpleDateFormat("dd.MM.yyyy hh:mm:ss zzz").format(new Date());
         recipients = e.getRecipients();
-        //originalLanguage = ml.getTranslator().detect(originalMessage);
-        //translatedMessage = ml.getTranslator().translate(originalLanguage, originalLanguage, Language.ENGLISH);
+        originalLanguage = TranslateUtils.detect("APIKEY", originalMessage);
+        translatedMessage = ml.getTranslator().translate(originalLanguage, originalLanguage, Language.ENGLISH);
 
-        //ml.getServer().getPluginManager().callEvent(
-                //new ChatTranslateEvent(
-                        //sender,
-                       // originalMessage,
-                       // translatedMessage,
-                      //  originalLanguage,
-                     //   timeStamp,
-                     //   recipients
-               // )
-      //  );
+        ml.getServer().getPluginManager().callEvent(
+                new ChatTranslateEvent(
+                        sender,
+                        originalMessage,
+                        translatedMessage,
+                        originalLanguage,
+                        timeStamp,
+                        recipients
+                )
+        );
 
-      //  ml.getMessageUtil().sendToPermissionHolders("minelator.monitor", String.format("&7[TRANSLATED] &8(%s) &r%s: &f%s", ml.getLanguage().getNameLanguage(originalLanguage), sender.getDisplayName(), translatedMessage));
+        ml.getMessageUtil().sendToPermissionHolders("minelator.monitor", String.format("&7[TRANSLATED] &8(%s) &r%s: &f%s", ml.getLanguage().getNameLanguage(originalLanguage), sender.getDisplayName(), translatedMessage));
 
     }
 
