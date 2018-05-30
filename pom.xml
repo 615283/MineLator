@@ -58,7 +58,7 @@
     <repositories>
         <repository>
             <id>615283-repo</id>
-            <url>http://repo.615283.net:8880/nexus/repository/maven-releases/</url>
+            <url>http://repo.615283.net:8880/repository/maven-releases/</url>
         </repository>
         <repository>
             <id>spigot-repo</id>
