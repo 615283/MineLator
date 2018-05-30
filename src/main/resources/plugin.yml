@@ -2,3 +2,7 @@ name: ${project.name}
 version: ${project.version}
 author: 615283
 main: com.georlegacy.general.minelator.MineLator
+permissions:
+  minelator.monitor:
+    default: op
+    description: Allows monitoring of translations.

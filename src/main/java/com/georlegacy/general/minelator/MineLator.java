@@ -1,32 +1,30 @@
 package com.georlegacy.general.minelator;
 
 import com.georlegacy.general.minelator.listeners.PlayerChatListener;
-import com.gtranslate.Language;
-import com.gtranslate.Translator;
+import com.georlegacy.general.minelator.util.MessageUtil;
+import com.rmtheis.yandtran.TranslateUtils;
+import com.rmtheis.yandtran.language.Language;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class MineLator extends JavaPlugin {
+    private MessageUtil messageUtil;
 
-    private Translator translator;
-    private Language language;
-
-    public Translator getTranslator() {
-        return translator;
-    }
-
-    public Language getLanguage() {
-        return language;
+    public MessageUtil getMessageUtil() {
+        return messageUtil;
     }
 
     @Override
     public void onEnable() {
-        translator = Translator.getInstance();
-        language = Language.getInstance();
+
+        System.out.println(TranslateUtils.translate("trnsl.1.1.20180530T074118Z.5bff55ca1e661af6.c05b79a4233986321558617efa469a4f9132d30c", "I think that we really ought to use french more often", Language.ENGLISH, Language.FRENCH));
+
+        this.messageUtil = new MessageUtil(this);
 
         PluginManager pm = this.getServer().getPluginManager();
 
         pm.registerEvents(new PlayerChatListener(this), this);
+
     }
 
     @Override

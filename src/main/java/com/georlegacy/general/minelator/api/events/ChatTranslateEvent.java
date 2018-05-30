@@ -28,9 +28,9 @@ public class ChatTranslateEvent extends Event {
      * Class constructor for the {@link Event} to be called by the {@link org.bukkit.Bukkit} {@link org.bukkit.plugin.PluginManager}.
      *
      * @param sender The sender of the original chat message.
-     * @param originalMessage The content of the message before it is translated by the {@link com.gtranslate.Translator} instance.
-     * @param translatedMessage The content of the message after it has been translated by the {@link com.gtranslate.Translator} instance.
-     * @param originalLanguage The {@link com.gtranslate.Language} code given to the language of the message content before translation.
+     * @param originalMessage The content of the message before it is translated by the {@link com.rmtheis.yandtran.TranslateUtils} class.
+     * @param translatedMessage The content of the message after it has been translated by the {@link com.rmtheis.yandtran.TranslateUtils} class.
+     * @param originalLanguage The {@link com.rmtheis.yandtran.language.Language} code given to the language of the message content before translation.
      * @param timeStamp The {@link java.text.SimpleDateFormat} timestamp for the sending of the message.
      * @param recipients The {@link Set} of recipients of the message.
      */
@@ -76,11 +76,11 @@ public class ChatTranslateEvent extends Event {
     }
 
     /**
-     * The {@link com.gtranslate.Language} code for the original language prior to the translation.
+     * The {@link com.rmtheis.yandtran.language.Language} code for the original language prior to the translation.
      *
      * @return The String language code.
      *
-     * @see com.gtranslate.Language
+     * @see com.rmtheis.yandtran.language.Language
      */
     public String getOriginalLanguage() {
         return originalLanguage;
